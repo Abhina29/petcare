@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'savecategory' %}" enctype="multipart/form-data">
+	{% csrf_token %}
+
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">NAME</h5>
+								</div>
+								<div class="card-body">
+									<input type="text" class="form-control" placeholder="Input" name="name">
+								</div>
+							</div>
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">IMAGE</h5>
+								</div>
+								<div class="card-body">
+									<input type="FILE" class="form-control" placeholder="UPLOAD IMAGE" name="image">
+								</div>
+							</div>
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">DESCRIPTION</h5>
+								</div>
+								<div class="card-body">
+									<input type="text" class="form-control" placeholder="Input" name="description">
+								</div>
+							</div>
+      <button type="submit">okey</button>
+	</form>
+</body>
+</html>
+{% endblock %}

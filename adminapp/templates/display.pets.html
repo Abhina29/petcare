@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">pets</th>
+      <th scope="col">breed</th>
+      <th scope="col">image</th>
+      <th scope="col">rate</th>
+      <th scope="col">description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+{% for d in data %}
+  <tr>
+    <td>{{d.pets}}</td>
+    <td>{{d.breed}}</td>
+
+
+    <td>
+      <img src="{{d.image.url}}" width="75px" height="75px">
+    </td>
+    <td>{{d.rate}}</td>
+    <td>{{d.description}}</td>
+   <td> <form action="{% url 'delpets' id=d.id %}">
+     <button type="submit">delete</button></form></td>
+     <td><form action="{% url 'editpets' id=d.id %}">
+         <button type="submit">edit</button></form> </td>
+
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

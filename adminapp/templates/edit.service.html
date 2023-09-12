@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'updateservice' id=data.id %}" enctype="multipart/form-data">
+	{% csrf_token %}
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Type of service</h5>
+								</div>
+								<div class="card-body">
+									<input class="form-control" placeholder="name of service" name="name" value="{{data.name}}">
+
+
+								</div>
+							</div>
+
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">IMAGE</h5>
+								</div>
+								<div class="card-body">
+									<input type="FILE" class="form-control" placeholder="UPLOAD IMAGE" name="image"><img src="{{data.image.url}}" width="100px;">
+								</div>
+							</div>
+    <div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Description</h5>
+								</div>
+								<div class="card-body">
+									<input type="text" class="form-control" placeholder="Input" name="description" value="{{data.description}}">
+								</div>
+							</div>
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Price</h5>
+								</div>
+								<div class="card-body">
+									<input type="text" class="form-control" placeholder="Input" name="price" value="{{data.price}}">
+								</div>
+							</div>
+      <button type="submit">okey</button>
+	</form>
+</body>
+</html>
+{% endblock %}

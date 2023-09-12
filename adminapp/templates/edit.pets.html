@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'update' id=data.id %}" enctype="multipart/form-data" enctype="multipart/form-data">
+	{% csrf_token %}
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">TYPE OF PETS</h5>
+								</div>
+								<div class="card-body">
+									<select class="form-control" placeholder="Input" name="pets" >
+										<option>{{data.pets}}</option>
+										<option>cat</option>
+										<option>dog</option>
+									</select>
+
+								</div>
+							</div>
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">BREED</h5>
+								</div>
+								<div class="card-body">
+									<input type="text" class="form-control" placeholder="Input" name="breed"  value="{{data.breed}}">
+								</div>
+							</div>
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">IMAGE</h5>
+								</div>
+								<div class="card-body">
+									<input type="FILE" class="form-control" placeholder="UPLOAD IMAGE" name="image" >
+									<img width="75px" height="75px" src="{{data.image.url}}">
+								</div>
+							</div>
+<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">RATE</h5>
+								</div>
+								<div class="card-body">
+									<input type="text" class="form-control" placeholder="Input" name="rate" value="{{data.rate}}">
+								</div>
+							</div>
+	<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">DESCRIPTION</h5>
+								</div>
+								<div class="card-body">
+									<textarea type="text" class="form-control" placeholder="Input" name="description" >{{data.description}}</textarea>
+								</div>
+							</div>
+      <button type="submit">okey</button>
+	</form>
+</body>
+</html>
+{% endblock %}

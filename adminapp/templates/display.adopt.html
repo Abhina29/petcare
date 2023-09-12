@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">name</th>
+      <th scope="col">mobile</th>
+      <th scope="col">address</th>
+        <th scope="col">breed</th>
+
+    </tr>
+  </thead>
+  <tbody>
+{% for d in data %}
+<form method="post" action="{% url 'saveaccept' id=d.id %}" enctype="multipart/form-data">
+	{% csrf_token %}
+  <tr>
+      <input type="hidden" value="{{d.name}}" name="name">
+    <td>{{d.name}}</td>
+      <input type="hidden" value="{{d.mobile}}" name="mobile">
+
+    <td>{{d.mobile}}</td>
+            <input type="hidden" value="{{d.address}}" name="address">
+
+          <td>{{d.address}}</td>
+            <input type="hidden" value="{{d.breed}}" name="breed">
+
+                <td>{{d.breed}}</td>
+
+    <td> <form>
+     <button type="submit">accept</button></form></td>
+   <td> <form action="{% url 'deladopt' id=d.id %}">
+     <button type="submit">delete</button></form></td>
+
+
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</form>
+</form>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    {% if messages %}
+        {% for i in messages %}
+            {% if i.tags == 'warning' %}
+                <script>
+                 swal('{{i}}','','warning')
+                </script>
+            {% elif i.tags == 'error' %}
+                <script>
+                 swal('{{i}}','','error')
+                </script>
+            {% else %}
+                <script>
+                 swal('{{i}}','','success')
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
+{% endblock %}
